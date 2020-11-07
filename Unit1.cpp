@@ -9,7 +9,10 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
+//------GAME SETTINGS------
 int playerSpeed = 4;
+int ballSpeed = 8;
+int dialogHeight = 30;
 
 bool player1MoveUp = false;
 bool player1MoveDown = false;
@@ -17,7 +20,7 @@ bool player1MoveDown = false;
 bool player2MoveUp = false;
 bool player2MoveDown = false;
 
-int dialogHeight = 30;
+
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
