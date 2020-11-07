@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 211
-  Top = 129
+  Left = 223
+  Top = 133
   BorderStyle = bsDialog
   Caption = 'PinBall by Artur Petrzak'
-  ClientHeight = 400
-  ClientWidth = 900
+  ClientHeight = 461
+  ClientWidth = 884
   Color = clMedGray
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,10 +12,12 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
   object player1: TImage
-    Left = 56
+    Left = 48
     Top = 136
     Width = 25
     Height = 125
@@ -319,5 +321,11 @@ object Form1: TForm1
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000000000000000000000}
+  end
+  object Timer1: TTimer
+    Interval = 15
+    OnTimer = Timer1Timer
+    Left = 800
+    Top = 16
   end
 end
