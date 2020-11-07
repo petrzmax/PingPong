@@ -11,7 +11,7 @@ TForm1 *Form1;
 
 //------GAME SETTINGS------
 int playerSpeed = 4;
-int ballSpeed = 8;
+int ballSpeed = 4;
 int dialogHeight = 30;
 
 bool player1MoveUp = false;
@@ -20,8 +20,8 @@ bool player1MoveDown = false;
 bool player2MoveUp = false;
 bool player2MoveDown = false;
 
-bool ballMoveVerticalDirection = false;
-bool ballMoveHorizontalDirection = false;
+bool ballMoveVerticalDirectionUp = false;
+bool ballMoveHorizontalDirectionRight = false;
 
 
 
@@ -48,11 +48,19 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if( player2->Top >= Form1->Height - player2->Height - dialogHeight )
                 player2->Top = Form1->Height - player2->Height - dialogHeight;
 
+        //Update ball position
+        if(ballMoveVerticalDirectionUp) ball->Top -= ballSpeed;
+        else ball->Top += ballSpeed;
+
+        if(ballMoveHorizontalDirectionRight) ball->Left += ballSpeed;
+        else ball->Left -= ballSpeed;
+
+
 
         //ball movement limit
-        if( ball->Top <= 0) ball->Top = 0;
+        if( ball->Top <= 0) ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
         if( ball->Top >= Form1->Height - ball->Height - dialogHeight )
-                ball->Top = Form1->Height - ball->Height - dialogHeight;
+                ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
 
 }
 //---------------------------------------------------------------------------
