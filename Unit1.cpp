@@ -20,6 +20,9 @@ bool player1MoveDown = false;
 bool player2MoveUp = false;
 bool player2MoveDown = false;
 
+bool ballMoveVerticalDirection = false;
+bool ballMoveHorizontalDirection = false;
+
 
 
 //---------------------------------------------------------------------------
@@ -31,6 +34,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
+        //Update players positions
         player1->Top += (-1*player1MoveUp + player1MoveDown) * playerSpeed;
         player2->Top += (-1*player2MoveUp + player2MoveDown) * playerSpeed;
 
@@ -43,6 +47,12 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if( player2->Top <= 0) player2->Top = 0;
         if( player2->Top >= Form1->Height - player2->Height - dialogHeight )
                 player2->Top = Form1->Height - player2->Height - dialogHeight;
+
+
+        //ball movement limit
+        if( ball->Top <= 0) ball->Top = 0;
+        if( ball->Top >= Form1->Height - ball->Height - dialogHeight )
+                ball->Top = Form1->Height - ball->Height - dialogHeight;
 
 }
 //---------------------------------------------------------------------------
