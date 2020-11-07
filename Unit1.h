@@ -15,6 +15,7 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
         TImage *player1;
         TTimer *Timer1;
+        TImage *player2;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);

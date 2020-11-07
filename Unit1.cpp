@@ -9,8 +9,9 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
-int playerSpeed = 3;
+int playerSpeed = 4;
 int player1Move = 0;
+int player2Move = 0;
 int dialogHeight = 30;
 
 //---------------------------------------------------------------------------
@@ -23,25 +24,41 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
         player1->Top += player1Move * playerSpeed;
+        player2->Top += player2Move * playerSpeed;
 
-        //Player movement limit
+        //Player1 movement limit
         if( player1->Top <= 0) player1->Top = 0;
         if( player1->Top >= Form1->Height - player1->Height - dialogHeight )
                 player1->Top = Form1->Height - player1->Height - dialogHeight;
+
+        //Player2 movement limit
+        if( player2->Top <= 0) player2->Top = 0;
+        if( player2->Top >= Form1->Height - player2->Height - dialogHeight )
+                player2->Top = Form1->Height - player2->Height - dialogHeight;
 
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
+       //Player1 movement pause
        if( Key == 'A') player1Move = 0;
        if( Key == 'Z') player1Move = 0;
+
+       //Player2 movement pause
+       if( Key == VK_UP) player2Move = 0;
+       if( Key == VK_DOWN) player2Move = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
-        if( Key == 'Z') player1Move = 1;
-        if( Key == 'A') player1Move = -1;
+       //Player1 movement
+       if( Key == 'A') player1Move = -1;
+       if( Key == 'Z') player1Move = 1;
+
+       //Player2 movement pause
+       if( Key == VK_UP) player2Move = -1;
+       if( Key == VK_DOWN) player2Move = 1;
 }
 //---------------------------------------------------------------------------
