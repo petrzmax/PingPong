@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 223
   Top = 132
   BorderStyle = bsDialog
-  Caption = 'PingPong by Artur Petrzak'
+  Caption = 'a'
   ClientHeight = 462
   ClientWidth = 884
   Color = clMedGray

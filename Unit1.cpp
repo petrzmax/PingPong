@@ -10,8 +10,13 @@
 TForm1 *Form1;
 
 int playerSpeed = 4;
-int player1Move = 0;
-int player2Move = 0;
+
+bool player1MoveUp = false;
+bool player1MoveDown = false;
+
+bool player2MoveUp = false;
+bool player2MoveDown = false;
+
 int dialogHeight = 30;
 
 //---------------------------------------------------------------------------
@@ -23,8 +28,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-        player1->Top += player1Move * playerSpeed;
-        player2->Top += player2Move * playerSpeed;
+        player1->Top += (-1*player1MoveUp + player1MoveDown) * playerSpeed;
+        player2->Top += (-1*player2MoveUp + player2MoveDown) * playerSpeed;
 
         //Player1 movement limit
         if( player1->Top <= 0) player1->Top = 0;
@@ -42,23 +47,23 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
        //Player1 movement pause
-       if( Key == 'A') player1Move = 0;
-       if( Key == 'Z') player1Move = 0;
+       if( Key == 'A') player1MoveUp = false;
+       if( Key == 'Z') player1MoveDown = false;
 
        //Player2 movement pause
-       if( Key == VK_UP) player2Move = 0;
-       if( Key == VK_DOWN) player2Move = 0;
+       if( Key == VK_UP) player2MoveUp = false;
+       if( Key == VK_DOWN) player2MoveDown = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
        //Player1 movement
-       if( Key == 'A') player1Move = -1;
-       if( Key == 'Z') player1Move = 1;
+       if( Key == 'A') player1MoveUp = true;
+       if( Key == 'Z') player1MoveDown = true;
 
-       //Player2 movement pause
-       if( Key == VK_UP) player2Move = -1;
-       if( Key == VK_DOWN) player2Move = 1;
+       //Player2 movement
+       if( Key == VK_UP) player2MoveUp = true;
+       if( Key == VK_DOWN) player2MoveDown = true;
 }
 //---------------------------------------------------------------------------
