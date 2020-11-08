@@ -19,8 +19,9 @@ __published:	// IDE-managed Components
         TImage *ball;
         TButton *newGameButton;
         TButton *nextRoundButton;
-        TLabel *iloscOdbic;
-        TLabel *wynik;
+        TLabel *collisionsNumber;
+        TLabel *score;
+        TLabel *pointFor;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);
@@ -28,6 +29,7 @@ __published:	// IDE-managed Components
           TShiftState Shift);
         void __fastcall newGameButtonClick(TObject *Sender);
         void __fastcall nextRoundButtonClick(TObject *Sender);
+        void __fastcall FormCreate(TObject *Sender);
 private:	// User declarations
         void gameReset();
         void showScoreBoard();

@@ -92,6 +92,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if(ball->Left <= playerBorderOffset)
         {
                 rightPlayerPoints++;
+                pointFor->Caption = "Punkt dla gracza prawego";
                 showScoreBoard();
         }
 
@@ -99,6 +100,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if(ball->Left +  ball->Width >= Form1->Width - playerBorderOffset)
         {
                 leftPlayerPoints++;
+                pointFor->Caption = "Punkt dla gracza lewego";
                 showScoreBoard();
         }
 }
@@ -163,11 +165,12 @@ void TForm1::showScoreBoard()
         nextRoundButton->Visible = true;
 
         //Enable Score
-        iloscOdbic->Visible = true;
-        wynik->Visible = true;
+        collisionsNumber->Visible = true;
+        score->Visible = true;
+        pointFor->Visible = true;
 
-        iloscOdbic->Caption = "Iloœæ odbiæ: " + IntToStr(numberOfBallPlayersCollisions);
-        wynik->Caption = "Wynik: " + IntToStr(leftPlayerPoints) + ":" + IntToStr(rightPlayerPoints);
+        collisionsNumber->Caption = "Iloœæ odbiæ: " + IntToStr(numberOfBallPlayersCollisions);
+        score->Caption = "Wynik: " + IntToStr(leftPlayerPoints) + ":" + IntToStr(rightPlayerPoints);
 
 }
 //---------------------------------------------------------------------------
@@ -179,14 +182,24 @@ void TForm1::hideScoreBoard()
         nextRoundButton->Visible = false;
 
         //Hide score
-        iloscOdbic->Visible = false;
-        wynik->Visible = false;
+        collisionsNumber->Visible = false;
+        score->Visible = false;
+        pointFor->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
 {
        gameReset();
        hideScoreBoard();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+     hideScoreBoard();
+     Timer1->Enabled = false;
+     newGameButton->Visible = true;
+
 }
 //---------------------------------------------------------------------------
 

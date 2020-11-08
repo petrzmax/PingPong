@@ -14,6 +14,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
@@ -631,8 +632,8 @@ object Form1: TForm1
       000000000000000000000000000000000000000000000000000000000000}
   end
   object ball: TImage
-    Left = 376
-    Top = 168
+    Left = 608
+    Top = 64
     Width = 30
     Height = 30
     Picture.Data = {
@@ -727,11 +728,11 @@ object Form1: TForm1
       FFFFFFFFFFFFFFFF0000}
     Transparent = True
   end
-  object iloscOdbic: TLabel
-    Left = 280
+  object collisionsNumber: TLabel
+    Left = 232
     Top = 56
-    Width = 257
-    Height = 36
+    Width = 353
+    Height = 41
     Alignment = taCenter
     AutoSize = False
     Caption = 'Ilo'#347#263' odbi'#263':'
@@ -744,14 +745,31 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object wynik: TLabel
-    Left = 280
-    Top = 88
-    Width = 257
-    Height = 36
+  object score: TLabel
+    Left = 232
+    Top = 96
+    Width = 353
+    Height = 41
     Alignment = taCenter
     AutoSize = False
     Caption = 'Wynik: '
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object pointFor: TLabel
+    Left = 232
+    Top = 136
+    Width = 353
+    Height = 41
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Punkt dla gracza Lewego '
     Color = clYellow
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
