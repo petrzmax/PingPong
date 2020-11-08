@@ -16,6 +16,7 @@ __published:	// IDE-managed Components
         TImage *player1;
         TTimer *Timer1;
         TImage *player2;
+        TImage *ball;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);
