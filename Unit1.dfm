@@ -727,6 +727,35 @@ object Form1: TForm1
       FFFFFFFFFFFFFFFF0000}
     Transparent = True
   end
+  object newGameButton: TButton
+    Left = 296
+    Top = 328
+    Width = 233
+    Height = 57
+    Caption = 'Nowa gra'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = newGameButtonClick
+  end
+  object nextRoundButton: TButton
+    Left = 296
+    Top = 264
+    Width = 233
+    Height = 57
+    Caption = 'Nast'#281'pna runda'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
   object Timer1: TTimer
     Interval = 5
     OnTimer = Timer1Timer
