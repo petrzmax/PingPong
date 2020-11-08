@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 222
-  Top = 142
+  Top = 104
   BorderStyle = bsDialog
   Caption = 'PingPong by Artur Petrzak'
-  ClientHeight = 461
+  ClientHeight = 500
   ClientWidth = 884
   Color = clMedGray
   UseDockManager = True
