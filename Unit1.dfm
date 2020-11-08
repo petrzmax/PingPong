@@ -1,10 +1,9 @@
 object Form1: TForm1
   Left = 222
   Top = 104
-  BorderStyle = bsDialog
+  Width = 900
+  Height = 539
   Caption = 'PingPong by Artur Petrzak'
-  ClientHeight = 500
-  ClientWidth = 884
   Color = clMedGray
   UseDockManager = True
   DockSite = True
@@ -733,6 +732,7 @@ object Form1: TForm1
     Top = 56
     Width = 353
     Height = 41
+    Align = alCustom
     Alignment = taCenter
     AutoSize = False
     Caption = 'Ilo'#347#263' odbi'#263':'
