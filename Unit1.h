@@ -34,6 +34,8 @@ private:	// User declarations
         void gameReset();
         void showScoreBoard();
         void hideScoreBoard();
+        bool collisionYdetect(TImage *Sender);
+        bool centerCollisionYdetect(TImage *Sender);
 
 
 public:		// User declarations
