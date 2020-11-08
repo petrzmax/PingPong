@@ -71,22 +71,18 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
                 ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
 
         //ball Left player1 collision
-        if(ball->Left <= player1->Left + player1->Width)
-            if(ball->Top + ball->Height / 2 >= player1->Top &&
-                ball->Top + ball->Height / 2 <= player1->Top + player1->Height)
-            {
+        if(ball->Left <= player1->Left + player1->Width && collisionYdetect(player1))
+        {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
-            }
+        }
 
         //ball Right player2 collision
-        if(ball->Left + ball->Width >= player2->Left)
-            if(ball->Top + ball->Height / 2 >= player2->Top &&
-                ball->Top + ball->Height / 2 <= player2->Top + player2->Height)
-            {
+        if(ball->Left + ball->Width >= player2->Left && collisionYdetect(player2))
+        {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
-            }
+        }
 
         //Left player1 Loose detection
         if(ball->Left <= playerBorderOffset)
@@ -185,6 +181,15 @@ void TForm1::hideScoreBoard()
         collisionsNumber->Visible = false;
         score->Visible = false;
         pointFor->Visible = false;
+}
+//---------------------------------------------------------------------------
+bool TForm1::collisionYdetect(TImage *Sender)
+{
+   if(ball->Top + ball->Height / 2 >= Sender->Top &&
+        ball->Top + ball->Height / 2 <= Sender->Top + Sender->Height)
+        return true;
+   else
+        return false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
