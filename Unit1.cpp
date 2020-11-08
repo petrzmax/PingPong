@@ -65,18 +65,28 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         else ball->Left -= ballHorizontalSpeed;
 
         //ball movement limit
-        if( ball->Top <= 0) ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
-        if( ball->Top >= Form1->Height - ball->Height - dialogHeight )
+        if( ball->Top <= 0)
+        {
+                sndPlaySound("snd/collision2.wav", SND_ASYNC);
                 ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
-
+        }
+        if( ball->Top >= Form1->Height - ball->Height - dialogHeight )
+        {
+                sndPlaySound("snd/collision2.wav", SND_ASYNC);
+                ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
+        }
         //ball Left player1 collision
         if(ball->Left <= player1->Left + player1->Width && collisionYdetect(player1))
         {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+                    sndPlaySound("snd/collision1.wav", SND_ASYNC);
 
                     if(centerCollisionYdetect(player1))
+                    {
+                          sndPlaySound("snd/ballUp.wav", SND_ASYNC);
                           ballHorizontalSpeed++;
+                    }
         }
 
         //ball Right player2 collision
@@ -84,15 +94,20 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+                    sndPlaySound("snd/collision1.wav", SND_ASYNC);
 
                     if(centerCollisionYdetect(player2))
+                    {
+                          sndPlaySound("snd/ballUp.wav", SND_ASYNC);
                           ballHorizontalSpeed++;
+                    }
         }
 
         //Left player1 Loose detection
         if(ball->Left <= playerBorderOffset)
         {
                 rightPlayerPoints++;
+                sndPlaySound("snd/lose.wav", SND_ASYNC);
                 pointFor->Caption = "Punkt dla gracza prawego";
                 showScoreBoard();
         }
@@ -101,6 +116,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if(ball->Left +  ball->Width >= Form1->Width - playerBorderOffset)
         {
                 leftPlayerPoints++;
+                sndPlaySound("snd/lose.wav", SND_ASYNC);
                 pointFor->Caption = "Punkt dla gracza lewego";
                 showScoreBoard();
         }
@@ -132,6 +148,7 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 void __fastcall TForm1::newGameButtonClick(TObject *Sender)
 {
+        sndPlaySound("snd/click.wav", SND_ASYNC);
         gameReset();
         hideScoreBoard();
 
@@ -216,6 +233,7 @@ else
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
 {
+        sndPlaySound("snd/click.wav", SND_ASYNC);
        gameReset();
        hideScoreBoard();
 }

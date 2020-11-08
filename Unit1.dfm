@@ -631,8 +631,8 @@ object Form1: TForm1
       000000000000000000000000000000000000000000000000000000000000}
   end
   object ball: TImage
-    Left = 608
-    Top = 64
+    Left = 664
+    Top = 24
     Width = 30
     Height = 30
     Picture.Data = {
@@ -728,7 +728,7 @@ object Form1: TForm1
     Transparent = True
   end
   object collisionsNumber: TLabel
-    Left = 232
+    Left = 272
     Top = 56
     Width = 353
     Height = 41
@@ -746,7 +746,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object score: TLabel
-    Left = 232
+    Left = 272
     Top = 96
     Width = 353
     Height = 41
@@ -763,7 +763,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object pointFor: TLabel
-    Left = 232
+    Left = 272
     Top = 136
     Width = 353
     Height = 41
@@ -780,7 +780,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object newGameButton: TButton
-    Left = 296
+    Left = 336
     Top = 328
     Width = 233
     Height = 57
@@ -795,7 +795,7 @@ object Form1: TForm1
     OnClick = newGameButtonClick
   end
   object nextRoundButton: TButton
-    Left = 296
+    Left = 336
     Top = 264
     Width = 233
     Height = 57
