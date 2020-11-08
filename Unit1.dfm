@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 223
-  Top = 132
+  Left = 222
+  Top = 142
   BorderStyle = bsDialog
-  Caption = 'a'
+  Caption = 'PingPong by Artur Petrzak'
   ClientHeight = 462
   ClientWidth = 884
   Color = clMedGray
@@ -19,7 +19,7 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object player1: TImage
-    Left = 48
+    Left = 50
     Top = 136
     Width = 25
     Height = 125
@@ -325,7 +325,7 @@ object Form1: TForm1
       000000000000000000000000000000000000000000000000000000000000}
   end
   object player2: TImage
-    Left = 792
+    Left = 825
     Top = 136
     Width = 25
     Height = 125
