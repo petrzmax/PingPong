@@ -177,6 +177,10 @@ void TForm1::gameReset()
         ball->Top = Form1->Height/2 - ball->Height/2;
         ball->Left = Form1->Width/2 - ball->Width/2;
 
+        //Random ball movement
+        ballMoveVerticalDirectionUp = randomBool();
+        ballMoveHorizontalDirectionRight = randomBool();
+
 }
 //---------------------------------------------------------------------------
 void TForm1::showScoreBoard()
