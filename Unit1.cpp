@@ -69,22 +69,13 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         else ball->Left -= ballHorizontalSpeed;
 
         //ball movement limit
-        if( ball->Top <= 0)
-        {
-                sndPlaySound("snd/collision2.wav", SND_ASYNC);
-                ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
-        }
-        if( ball->Top >= Form1->Height - ball->Height - dialogHeight )
-        {
-                sndPlaySound("snd/collision2.wav", SND_ASYNC);
-                ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
-        }
+        if( ball->Top <= 0) ballLimitAction();
+        if( ball->Top >= Form1->Height - ball->Height - dialogHeight ) ballLimitAction();
+
         //ball Left player1 collision
         if(ball->Left <= player1->Left + player1->Width && collisionYdetect(player1))
         {
-                    numberOfBallPlayersCollisions++;
-                    ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
-                    sndPlaySound("snd/collision1.wav", SND_ASYNC);
+            ballPlayerCollisionAction();
 
                     if(centerCollisionYdetect(player1))
                     {
@@ -96,9 +87,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         //ball Right player2 collision
         if(ball->Left + ball->Width >= player2->Left && collisionYdetect(player2))
         {
-                    numberOfBallPlayersCollisions++;
-                    ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
-                    sndPlaySound("snd/collision1.wav", SND_ASYNC);
+			ballPlayerCollisionAction();
 
                     if(centerCollisionYdetect(player2))
                     {
@@ -206,18 +195,31 @@ void TForm1::showScoreBoard()
 //---------------------------------------------------------------------------
 void TForm1::hideScoreBoard()
 {
-        //Start the game
-        Timer1->Enabled = true;
-        ball->Visible = true;
+	//Start the game
+	Timer1->Enabled = true;
+	ball->Visible = true;
 
-        //Hide buttons
-        newGameButton->Visible = false;
-        nextRoundButton->Visible = false;
+	//Hide buttons
+	newGameButton->Visible = false;
+	nextRoundButton->Visible = false;
 
-        //Hide score
-        collisionsNumber->Visible = false;
-        score->Visible = false;
-        pointFor->Visible = false;
+	//Hide score
+	collisionsNumber->Visible = false;
+	score->Visible = false;
+	pointFor->Visible = false;
+}
+//---------------------------------------------------------------------------
+void TForm1::ballLimitAction()
+{
+    sndPlaySound("snd/collision2.wav", SND_ASYNC);
+    ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
+}
+//---------------------------------------------------------------------------
+void TForm1::ballPlayerCollisionAction()
+{
+                    numberOfBallPlayersCollisions++;
+                    ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+                    sndPlaySound("snd/collision1.wav", SND_ASYNC);
 }
 //---------------------------------------------------------------------------
 bool TForm1::collisionYdetect(TImage *Sender)
