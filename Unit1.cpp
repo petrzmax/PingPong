@@ -196,6 +196,16 @@ void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
+     char *startMessage = "Witaj w grze PingPong!\n\n"
+          "Sterowanie:\n"
+          "Gracz z lewej: A - w górê, B - w dó³\n"
+          "Gracz z prawej: Strza³ka w górê - w górê, Strza³ka w dó³ - w dó³\n\n"
+          "Gdy odbijesz pi³kê œrodkiem paletki, pi³ka przyœpieszy!\n"
+
+          "Skaluj¹c okno mo¿esz dowolnie zmieniaæ pole gry.\n"
+          "\nMi³ego granka!";
+
+     Application->MessageBoxA(startMessage, "PingPong", MB_OK);
      hideScoreBoard();
      Timer1->Enabled = false;
      newGameButton->Visible = true;
