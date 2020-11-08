@@ -44,8 +44,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
         //Update players positions
-        player1->Top += (-1*player1MoveUp + player1MoveDown) * playerSpeed;
-        player2->Top += (-1*player2MoveUp + player2MoveDown) * playerSpeed;
+        player1->Top += (player1MoveDown - player1MoveUp) * playerSpeed;
+        player2->Top += (player2MoveDown - player2MoveUp) * playerSpeed;
 
         //Player1 movement limit
         if( player1->Top <= 0) player1->Top = 0;
@@ -63,8 +63,6 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 
         if(ballMoveHorizontalDirectionRight) ball->Left += ballHorizontalSpeed;
         else ball->Left -= ballHorizontalSpeed;
-
-
 
         //ball movement limit
         if( ball->Top <= 0) ballMoveVerticalDirectionUp = !ballMoveVerticalDirectionUp;
@@ -163,8 +161,10 @@ void TForm1::gameReset()
 }
 //---------------------------------------------------------------------------
 void TForm1::showScoreBoard()
-{
+{       //Stop the game
         Timer1->Enabled = false;
+        ball->Visible = false;
+
         //Enable buttons
         newGameButton->Visible = true;
         nextRoundButton->Visible = true;
@@ -181,7 +181,10 @@ void TForm1::showScoreBoard()
 //---------------------------------------------------------------------------
 void TForm1::hideScoreBoard()
 {
+        //Start the game
         Timer1->Enabled = true;
+        ball->Visible = true;
+
         //Hide buttons
         newGameButton->Visible = false;
         nextRoundButton->Visible = false;
@@ -232,6 +235,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
      Application->MessageBoxA(startMessage, "PingPong", MB_OK);
      hideScoreBoard();
      Timer1->Enabled = false;
+     ball->Visible = false;
      newGameButton->Visible = true;
 
 }
