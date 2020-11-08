@@ -10,10 +10,12 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
+#define DEFAULT_BALL_SPEED 4;
+
 //------GAME SETTINGS------
 int playerSpeed = 4;
-int ballHorizontalSpeed = 4;
-int ballVerticalSpeed = 4;
+int ballHorizontalSpeed = DEFAULT_BALL_SPEED;
+int ballVerticalSpeed = DEFAULT_BALL_SPEED;
 
 int dialogHeight = 30;
 int playerBorderOffset = 50;
@@ -39,6 +41,7 @@ int rightPlayerPoints = 0;
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
 {
+srand(time(NULL));
 }
 //---------------------------------------------------------------------------
 
@@ -161,8 +164,8 @@ void TForm1::gameReset()
 {
         //Reset all game variables
         numberOfBallPlayersCollisions = 0;
-        ballHorizontalSpeed = 4;
-        ballVerticalSpeed = 4;
+        ballHorizontalSpeed = DEFAULT_BALL_SPEED;
+        ballVerticalSpeed = DEFAULT_BALL_SPEED;
 
         //Reset player1 position
         player1->Top = Form1->Height/2 - player1->Height/2;
@@ -175,6 +178,10 @@ void TForm1::gameReset()
         //Reset ball position
         ball->Top = Form1->Height/2 - ball->Height/2;
         ball->Left = Form1->Width/2 - ball->Width/2;
+
+        //Random ball movement
+        ballMoveVerticalDirectionUp = randomBool();
+        ballMoveHorizontalDirectionRight = randomBool();
 
 }
 //---------------------------------------------------------------------------
@@ -229,7 +236,11 @@ if(Sender->Top + (Sender->Height/5)*2 <= ball->Top + ball->Height/2 &&
         return true;
 else
         return false;
-
+}
+//---------------------------------------------------------------------------
+bool TForm1::randomBool()
+{
+     return rand()%2 == 1;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)

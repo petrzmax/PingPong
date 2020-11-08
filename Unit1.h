@@ -9,6 +9,8 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
+#include <time.h>
+#include <cstdlib>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -36,6 +38,7 @@ private:	// User declarations
         void hideScoreBoard();
         bool collisionYdetect(TImage *Sender);
         bool centerCollisionYdetect(TImage *Sender);
+        bool randomBool();
 
 
 public:		// User declarations
