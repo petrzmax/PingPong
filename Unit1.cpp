@@ -11,7 +11,8 @@ TForm1 *Form1;
 
 //------GAME SETTINGS------
 int playerSpeed = 4;
-int ballSpeed = 4;
+int ballHorizontalSpeed = 4;
+int ballVerticalSpeed = 4;
 
 int dialogHeight = 30;
 int playerBorderOffset = 50;
@@ -57,11 +58,11 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
                 player2->Top = Form1->Height - player2->Height - dialogHeight;
 
         //Update ball position
-        if(ballMoveVerticalDirectionUp) ball->Top -= ballSpeed;
-        else ball->Top += ballSpeed;
+        if(ballMoveVerticalDirectionUp) ball->Top -= ballVerticalSpeed;
+        else ball->Top += ballVerticalSpeed;
 
-        if(ballMoveHorizontalDirectionRight) ball->Left += ballSpeed;
-        else ball->Left -= ballSpeed;
+        if(ballMoveHorizontalDirectionRight) ball->Left += ballHorizontalSpeed;
+        else ball->Left -= ballHorizontalSpeed;
 
 
 
@@ -75,6 +76,9 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+
+                    if(centerCollisionYdetect(player1))
+                          ballHorizontalSpeed++;
         }
 
         //ball Right player2 collision
@@ -82,6 +86,9 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         {
                     numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+
+                    if(centerCollisionYdetect(player2))
+                          ballHorizontalSpeed++;
         }
 
         //Left player1 Loose detection
@@ -138,6 +145,8 @@ void TForm1::gameReset()
 {
         //Reset all game variables
         numberOfBallPlayersCollisions = 0;
+        ballHorizontalSpeed = 4;
+        ballVerticalSpeed = 4;
 
         //Reset player1 position
         player1->Top = Form1->Height/2 - player1->Height/2;
@@ -190,6 +199,16 @@ bool TForm1::collisionYdetect(TImage *Sender)
         return true;
    else
         return false;
+}
+//---------------------------------------------------------------------------
+bool TForm1::centerCollisionYdetect(TImage *Sender)
+{
+if(Sender->Top + (Sender->Height/5)*2 <= ball->Top + ball->Height/2 &&
+        Sender->Top + (Sender->Height/5)*3 >= ball->Top + ball->Height/2)
+        return true;
+else
+        return false;
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
