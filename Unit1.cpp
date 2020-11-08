@@ -91,15 +91,15 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         //Left player1 Loose detection
         if(ball->Left <= playerBorderOffset)
         {
-                showScoreBoard();
                 rightPlayerPoints++;
+                showScoreBoard();
         }
 
         //Right player2 Loose detection
         if(ball->Left +  ball->Width >= Form1->Width - playerBorderOffset)
         {
-                showScoreBoard();
                 leftPlayerPoints++;
+                showScoreBoard();
         }
 }
 //---------------------------------------------------------------------------
@@ -132,17 +132,14 @@ void __fastcall TForm1::newGameButtonClick(TObject *Sender)
         gameReset();
         hideScoreBoard();
 
-        Timer1->Enabled = true;
-
-
+        leftPlayerPoints = 0;
+        rightPlayerPoints = 0;
 }
 //---------------------------------------------------------------------------
 void TForm1::gameReset()
 {
         //Reset all game variables
         numberOfBallPlayersCollisions = 0;
-        leftPlayerPoints = 0;
-        rightPlayerPoints = 0;
 
         //Reset player1 position
         player1->Top = Form1->Height/2 - player1->Height/2;
@@ -165,22 +162,31 @@ void TForm1::showScoreBoard()
         newGameButton->Visible = true;
         nextRoundButton->Visible = true;
 
+        //Enable Score
+        iloscOdbic->Visible = true;
+        wynik->Visible = true;
+
+        iloscOdbic->Caption = "Iloœæ odbiæ: " + IntToStr(numberOfBallPlayersCollisions);
+        wynik->Caption = "Wynik: " + IntToStr(leftPlayerPoints) + ":" + IntToStr(rightPlayerPoints);
+
 }
 //---------------------------------------------------------------------------
 void TForm1::hideScoreBoard()
 {
         Timer1->Enabled = true;
-        //Disable buttons
+        //Hide buttons
         newGameButton->Visible = false;
         nextRoundButton->Visible = false;
+
+        //Hide score
+        iloscOdbic->Visible = false;
+        wynik->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
 {
        gameReset();
        hideScoreBoard();
-
-
 }
 //---------------------------------------------------------------------------
 

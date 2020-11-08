@@ -19,6 +19,8 @@ __published:	// IDE-managed Components
         TImage *ball;
         TButton *newGameButton;
         TButton *nextRoundButton;
+        TLabel *iloscOdbic;
+        TLabel *wynik;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);

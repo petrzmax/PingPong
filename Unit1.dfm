@@ -727,6 +727,40 @@ object Form1: TForm1
       FFFFFFFFFFFFFFFF0000}
     Transparent = True
   end
+  object iloscOdbic: TLabel
+    Left = 280
+    Top = 56
+    Width = 257
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Ilo'#347#263' odbi'#263':'
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object wynik: TLabel
+    Left = 280
+    Top = 88
+    Width = 257
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Wynik: '
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
   object newGameButton: TButton
     Left = 296
     Top = 328
