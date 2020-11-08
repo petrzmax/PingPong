@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 142
   BorderStyle = bsDialog
   Caption = 'PingPong by Artur Petrzak'
-  ClientHeight = 462
+  ClientHeight = 461
   ClientWidth = 884
   Color = clMedGray
   UseDockManager = True
@@ -14,13 +14,14 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
   object player1: TImage
     Left = 50
-    Top = 136
+    Top = 187
     Width = 25
     Height = 125
     Picture.Data = {
@@ -326,7 +327,7 @@ object Form1: TForm1
   end
   object player2: TImage
     Left = 825
-    Top = 136
+    Top = 187
     Width = 25
     Height = 125
     Picture.Data = {
@@ -631,8 +632,8 @@ object Form1: TForm1
       000000000000000000000000000000000000000000000000000000000000}
   end
   object ball: TImage
-    Left = 376
-    Top = 168
+    Left = 608
+    Top = 64
     Width = 30
     Height = 30
     Picture.Data = {
@@ -726,6 +727,87 @@ object Form1: TForm1
       00000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFF0000}
     Transparent = True
+  end
+  object collisionsNumber: TLabel
+    Left = 232
+    Top = 56
+    Width = 353
+    Height = 41
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Ilo'#347#263' odbi'#263':'
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object score: TLabel
+    Left = 232
+    Top = 96
+    Width = 353
+    Height = 41
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Wynik: '
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object pointFor: TLabel
+    Left = 232
+    Top = 136
+    Width = 353
+    Height = 41
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Punkt dla gracza Lewego '
+    Color = clYellow
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object newGameButton: TButton
+    Left = 296
+    Top = 328
+    Width = 233
+    Height = 57
+    Caption = 'Nowa gra'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = newGameButtonClick
+  end
+  object nextRoundButton: TButton
+    Left = 296
+    Top = 264
+    Width = 233
+    Height = 57
+    Caption = 'Nast'#281'pna runda'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = nextRoundButtonClick
   end
   object Timer1: TTimer
     Interval = 5

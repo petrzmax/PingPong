@@ -27,7 +27,10 @@ bool player2MoveDown = false;
 bool ballMoveVerticalDirectionUp = false;
 bool ballMoveHorizontalDirectionRight = false;
 
+//-----SCORE-----
 int numberOfBallPlayersCollisions = 0;
+int leftPlayerPoints = 0;
+int rightPlayerPoints = 0;
 
 
 //---------------------------------------------------------------------------
@@ -86,11 +89,20 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
             }
 
         //Left player1 Loose detection
-        if(ball->Left <= playerBorderOffset) Timer1->Enabled = false;
+        if(ball->Left <= playerBorderOffset)
+        {
+                rightPlayerPoints++;
+                pointFor->Caption = "Punkt dla gracza prawego";
+                showScoreBoard();
+        }
 
         //Right player2 Loose detection
-        if(ball->Left +  ball->Width >= Form1->Width - playerBorderOffset) Timer1->Enabled = false;
-
+        if(ball->Left +  ball->Width >= Form1->Width - playerBorderOffset)
+        {
+                leftPlayerPoints++;
+                pointFor->Caption = "Punkt dla gracza lewego";
+                showScoreBoard();
+        }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
@@ -117,3 +129,77 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
        if( Key == VK_DOWN) player2MoveDown = true;
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm1::newGameButtonClick(TObject *Sender)
+{
+        gameReset();
+        hideScoreBoard();
+
+        leftPlayerPoints = 0;
+        rightPlayerPoints = 0;
+}
+//---------------------------------------------------------------------------
+void TForm1::gameReset()
+{
+        //Reset all game variables
+        numberOfBallPlayersCollisions = 0;
+
+        //Reset player1 position
+        player1->Top = Form1->Height/2 - player1->Height/2;
+        player1->Left = playerBorderOffset;
+
+        //Reset player2 position
+        player2->Top = Form1->Height/2 - player2->Height/2;
+        player2->Left = Form1->Width - playerBorderOffset - player2->Width;
+
+        //Reset ball position
+        ball->Top = Form1->Height/2 - ball->Height/2;
+        ball->Left = Form1->Width/2 - ball->Width/2;
+
+}
+//---------------------------------------------------------------------------
+void TForm1::showScoreBoard()
+{
+        Timer1->Enabled = false;
+        //Enable buttons
+        newGameButton->Visible = true;
+        nextRoundButton->Visible = true;
+
+        //Enable Score
+        collisionsNumber->Visible = true;
+        score->Visible = true;
+        pointFor->Visible = true;
+
+        collisionsNumber->Caption = "Iloœæ odbiæ: " + IntToStr(numberOfBallPlayersCollisions);
+        score->Caption = "Wynik: " + IntToStr(leftPlayerPoints) + ":" + IntToStr(rightPlayerPoints);
+
+}
+//---------------------------------------------------------------------------
+void TForm1::hideScoreBoard()
+{
+        Timer1->Enabled = true;
+        //Hide buttons
+        newGameButton->Visible = false;
+        nextRoundButton->Visible = false;
+
+        //Hide score
+        collisionsNumber->Visible = false;
+        score->Visible = false;
+        pointFor->Visible = false;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
+{
+       gameReset();
+       hideScoreBoard();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+     hideScoreBoard();
+     Timer1->Enabled = false;
+     newGameButton->Visible = true;
+
+}
+//---------------------------------------------------------------------------
+
