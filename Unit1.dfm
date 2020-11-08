@@ -755,6 +755,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    OnClick = nextRoundButtonClick
   end
   object Timer1: TTimer
     Interval = 5

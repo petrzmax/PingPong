@@ -25,7 +25,13 @@ __published:	// IDE-managed Components
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
         void __fastcall newGameButtonClick(TObject *Sender);
+        void __fastcall nextRoundButtonClick(TObject *Sender);
 private:	// User declarations
+        void gameReset();
+        void showScoreBoard();
+        void hideScoreBoard();
+
+
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
 };
