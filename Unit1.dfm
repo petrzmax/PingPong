@@ -728,7 +728,7 @@ object Form1: TForm1
     Transparent = True
   end
   object Timer1: TTimer
-    Interval = 1
+    Interval = 5
     OnTimer = Timer1Timer
     Left = 800
     Top = 16

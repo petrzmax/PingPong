@@ -16,14 +16,18 @@ int ballSpeed = 4;
 int dialogHeight = 30;
 int playerBorderOffset = 50;
 
+//-----PLAYER MOVEMENT-----
 bool player1MoveUp = false;
 bool player1MoveDown = false;
 
 bool player2MoveUp = false;
 bool player2MoveDown = false;
 
+//-----BALL MOVEMENT-----
 bool ballMoveVerticalDirectionUp = false;
 bool ballMoveHorizontalDirectionRight = false;
+
+int numberOfBallPlayersCollisions = 0;
 
 
 //---------------------------------------------------------------------------
@@ -67,13 +71,19 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
         if(ball->Left <= player1->Left + player1->Width)
             if(ball->Top + ball->Height / 2 >= player1->Top &&
                 ball->Top + ball->Height / 2 <= player1->Top + player1->Height)
+            {
+                    numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+            }
 
         //ball Right player2 collision
         if(ball->Left + ball->Width >= player2->Left)
             if(ball->Top + ball->Height / 2 >= player2->Top &&
                 ball->Top + ball->Height / 2 <= player2->Top + player2->Height)
+            {
+                    numberOfBallPlayersCollisions++;
                     ballMoveHorizontalDirectionRight = !ballMoveHorizontalDirectionRight;
+            }
 
         //Left player1 Loose detection
         if(ball->Left <= playerBorderOffset) Timer1->Enabled = false;
