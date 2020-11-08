@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 142
   BorderStyle = bsDialog
   Caption = 'PingPong by Artur Petrzak'
-  ClientHeight = 462
+  ClientHeight = 461
   ClientWidth = 884
   Color = clMedGray
   UseDockManager = True
@@ -21,7 +21,7 @@ object Form1: TForm1
   TextHeight = 13
   object player1: TImage
     Left = 50
-    Top = 136
+    Top = 187
     Width = 25
     Height = 125
     Picture.Data = {
@@ -327,7 +327,7 @@ object Form1: TForm1
   end
   object player2: TImage
     Left = 825
-    Top = 136
+    Top = 187
     Width = 25
     Height = 125
     Picture.Data = {
