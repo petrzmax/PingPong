@@ -10,10 +10,12 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
+#define DEFAULT_BALL_SPEED 4;
+
 //------GAME SETTINGS------
 int playerSpeed = 4;
-int ballHorizontalSpeed = 4;
-int ballVerticalSpeed = 4;
+int ballHorizontalSpeed = DEFAULT_BALL_SPEED;
+int ballVerticalSpeed = DEFAULT_BALL_SPEED;
 
 int dialogHeight = 30;
 int playerBorderOffset = 50;
@@ -162,8 +164,8 @@ void TForm1::gameReset()
 {
         //Reset all game variables
         numberOfBallPlayersCollisions = 0;
-        ballHorizontalSpeed = 4;
-        ballVerticalSpeed = 4;
+        ballHorizontalSpeed = DEFAULT_BALL_SPEED;
+        ballVerticalSpeed = DEFAULT_BALL_SPEED;
 
         //Reset player1 position
         player1->Top = Form1->Height/2 - player1->Height/2;
