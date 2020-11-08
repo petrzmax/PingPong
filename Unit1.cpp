@@ -27,7 +27,10 @@ bool player2MoveDown = false;
 bool ballMoveVerticalDirectionUp = false;
 bool ballMoveHorizontalDirectionRight = false;
 
+//-----SCORE-----
 int numberOfBallPlayersCollisions = 0;
+int leftPlayerPoints = 0;
+int rightPlayerPoints = 0;
 
 
 //---------------------------------------------------------------------------
@@ -117,3 +120,30 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
        if( Key == VK_DOWN) player2MoveDown = true;
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm1::newGameButtonClick(TObject *Sender)
+{
+        //Reset all game variables
+        numberOfBallPlayersCollisions = 0;
+        leftPlayerPoints = 0;
+        rightPlayerPoints = 0;
+
+        //Reset player1 position
+        player1->Top = Form1->Height/2 - player1->Height/2;
+        player1->Left = playerBorderOffset;
+
+        //Reset player2 position
+        player2->Top = Form1->Height/2 - player2->Height/2;
+        player2->Left = Form1->Width - playerBorderOffset - player2->Width;
+
+        //Reset ball position
+        ball->Top = Form1->Height/2 - ball->Height/2;
+        ball->Left = Form1->Width/2 - ball->Width/2;
+
+        Timer1->Enabled = true;
+
+        //Disable buttons
+        newGameButton->Visible = false;
+        nextRoundButton->Visible = false;
+}
+//---------------------------------------------------------------------------
+

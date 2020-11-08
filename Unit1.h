@@ -17,11 +17,14 @@ __published:	// IDE-managed Components
         TTimer *Timer1;
         TImage *player2;
         TImage *ball;
+        TButton *newGameButton;
+        TButton *nextRoundButton;
         void __fastcall Timer1Timer(TObject *Sender);
         void __fastcall FormKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);
         void __fastcall FormKeyDown(TObject *Sender, WORD &Key,
           TShiftState Shift);
+        void __fastcall newGameButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
