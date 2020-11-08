@@ -36,10 +36,11 @@ private:	// User declarations
         void gameReset();
         void showScoreBoard();
         void hideScoreBoard();
+        void ballLimitAction();
+        void ballPlayerCollisionAction();
         bool collisionYdetect(TImage *Sender);
         bool centerCollisionYdetect(TImage *Sender);
         bool randomBool();
-
 
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
