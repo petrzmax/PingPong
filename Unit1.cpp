@@ -39,6 +39,7 @@ int rightPlayerPoints = 0;
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
 {
+srand(time(NULL));
 }
 //---------------------------------------------------------------------------
 
@@ -229,7 +230,11 @@ if(Sender->Top + (Sender->Height/5)*2 <= ball->Top + ball->Height/2 &&
         return true;
 else
         return false;
-
+}
+//---------------------------------------------------------------------------
+bool TForm1::randomBool()
+{
+     return rand()%2 == 1;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::nextRoundButtonClick(TObject *Sender)
